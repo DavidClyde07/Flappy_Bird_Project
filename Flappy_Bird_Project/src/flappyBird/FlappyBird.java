@@ -7,6 +7,8 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -15,7 +17,7 @@ import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-public class FlappyBird implements ActionListener, MouseListener{
+public class FlappyBird implements ActionListener, KeyListener, MouseListener{
 	
 	////////////////////////////////////////////////////////
 	// Variables
@@ -50,6 +52,7 @@ public class FlappyBird implements ActionListener, MouseListener{
 		jframe.setResizable(false);
 		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jframe.addMouseListener(this);
+		jframe.addKeyListener(this);
 		jframe.add(render);
 		
 		//Rectange() parameters are : x, y, size,size (ie here we get a 20 by 20 rectangle)
@@ -218,7 +221,7 @@ public class FlappyBird implements ActionListener, MouseListener{
 			paintColumn(g, column);
 		}
 		
-		g.setColor(Color.white);
+		g.setColor(Color.black);
 		g.setFont(new Font("Arial" ,1,50));
 		
 		if (!started) {
@@ -229,8 +232,10 @@ public class FlappyBird implements ActionListener, MouseListener{
 		
 		if (gameOver) {
 			//System.out.println("Game Over!!!");
-			g.drawString("Game Over!!!", 100, HEIGHT/2 - 50);
-			//started = false;
+			g.drawString("Game Over!!!", 100, HEIGHT/2 - 150);
+			g.drawString("You Scored : " + String.valueOf(score), 100, HEIGHT/2 - 100);
+			g.drawString("Click To Restart!!!", 100, HEIGHT/2 - 10);
+			
 		}
 		
 		if(!gameOver && started) {
@@ -285,6 +290,28 @@ public class FlappyBird implements ActionListener, MouseListener{
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			
+			jump();
+		}
 		
 	}
 
