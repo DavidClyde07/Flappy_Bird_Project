@@ -233,7 +233,7 @@ public class FlappyBird implements ActionListener, KeyListener, MouseListener{
 		if (gameOver) {
 			//System.out.println("Game Over!!!");
 			g.drawString("Game Over!!!", 100, HEIGHT/2 - 150);
-			g.drawString("You Scored : " + String.valueOf(score), 100, HEIGHT/2 - 100);
+			g.drawString("Your Score : " + String.valueOf(score), 100, HEIGHT/2 - 100);
 			g.drawString("Click To Restart!!!", 100, HEIGHT/2 - 10);
 			
 		}
